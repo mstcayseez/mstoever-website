@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. Stoever – Autor</title>
+  <meta name="description" content="M. Stoever – Autor düsterer Geschichten. Dark Fantasy & Psychothriller. Entdecke die Bücher.">
+  <meta name="author" content="M. Stoever">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a25;
+      --text-primary: #e8e6e3;
+      --text-secondary: #9a9a9a;
+      --accent: #8b2f3f;
+      --accent-glow: #b33a4f;
+      --accent-subtle: rgba(139, 47, 63, 0.15);
+      --border: rgba(255, 255, 255, 0.06);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--accent-glow); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent-glow);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Mobile Menu */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none; border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      width: 24px; height: 2px;
+      background: var(--text-primary);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(139, 47, 63, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(60, 20, 80, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(139, 47, 63, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+
+    .hero-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.7s;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.2rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.9s;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(139, 47, 63, 0.3);
+    }
+
+    .hero-cta svg {
+      width: 16px; height: 16px;
+      transition: transform 0.3s;
+    }
+
+    .hero-cta:hover svg { transform: translateY(3px); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+    }
+
+    .hero-scroll-hint .line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--accent-glow), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 6rem 2rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-dark) 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--bg-card) 0%, #1a1520 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .about-image-placeholder svg {
+      width: 48px; height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    .about-image-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 1rem; left: 1rem;
+      right: -1rem; bottom: -1rem;
+      border: 1px solid var(--accent);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .about-text p:first-of-type {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-glow);
+    }
+
+    .about-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== BOOKS ===== */
+    .books { position: relative; }
+
+    .books-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .book-card {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .book-card:hover {
+      border-color: rgba(139, 47, 63, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .book-cover {
+      aspect-ratio: 2/3;
+      background: linear-gradient(135deg, #1a1520 0%, #0f0f18 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(139, 47, 63, 0.1) 0%, transparent 60%);
+    }
+
+    .book-cover-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      line-height: 1.2;
+    }
+
+    .book-cover-author {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-info { display: flex; flex-direction: column; justify-content: center; }
+
+    .book-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      background: var(--accent-subtle);
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .book-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .book-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .book-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .book-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .book-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .book-meta-item svg { width: 14px; height: 14px; opacity: 0.6; }
+
+    .book-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-amazon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+
+    .btn-amazon:hover {
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 47, 63, 0.3);
+    }
+
+    .btn-amazon svg { width: 16px; height: 16px; }
+
+    .btn-leseprobe {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-leseprobe:hover {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-dark) 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-text p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(139, 47, 63, 0.3);
+      transform: translateX(4px);
+    }
+
+    .contact-link svg {
+      width: 20px; height: 20px;
+      color: var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .contact-link-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-link-value {
+      font-size: 0.95rem;
+      margin-top: 0.15rem;
+    }
+
+    .contact-newsletter {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+
+    .contact-newsletter h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-newsletter p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-note {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--accent-glow); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-image-wrapper { max-width: 300px; margin: 0 auto; }
+
+      .book-card { grid-template-columns: 1fr; }
+      .book-cover { max-width: 250px; margin: 0 auto; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10, 10, 15, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 999;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.2rem; }
+      .nav-toggle { display: flex; z-index: 1001; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .about-stats { flex-direction: column; gap: 1rem; }
+
+      .book-card { padding: 1.5rem; }
+      .book-links { flex-direction: column; }
+      .btn-amazon, .btn-leseprobe { width: 100%; justify-content: center; }
+    }
+
+    /* ===== IMPRESSUM / DATENSCHUTZ PAGES (inline modal) ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 10, 15, 0.95);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 4rem 2rem;
+    }
+
+    .modal-overlay.open { display: block; }
+
+    .modal-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2001;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover { color: var(--accent-glow); }
+
+    .modal-content h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .modal-content h3 {
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .modal-content p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">M<span>.</span> Stoever</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">Über mich</a></li>
+      <li><a href="#books" onclick="closeMenu()">Bücher</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-tagline">Dark Fantasy &amp; Psychothriller</p>
+      <h1 class="hero-title">M. Stoever</h1>
+      <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
+      <a href="#books" class="hero-cta">
+        Entdecke die Bücher
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper reveal">
+          <img src="author.png" alt="M. Stoever – Autor" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center; border: 1px solid var(--border);">
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">Über den Autor</p>
+          <h2 class="section-title">Die Dunkelheit hat eine Geschichte – und ich schreibe sie auf.</h2>
+          <p>Manche Geschichten beginnen nicht mit einem Anfang, sondern mit einem Gefühl – einem Schatten, der sich in den Gedanken festsetzt und nicht mehr loslässt. Genau dort setzt M. Stoever an.</p>
+          <p>Als Autor bewegt er sich zwischen den Genres Dark Fantasy und Psychothriller. Seine Geschichten leben von psychologischer Tiefe, düsteren Welten und Figuren, die an den Grenzen ihrer Menschlichkeit wandeln. Keine strahlenden Helden, keine einfachen Antworten – nur die Abgründe, die sich auftun, wenn man genau genug hinschaut.</p>
+          <p>Mit „48 Stunden" erschien sein Debüt im Bereich Psychothriller, mit „Schattenseele" folgt eine Geschichte, die tief in die Welt der dunklen Fantasie eintaucht – geprägt von inneren Dämonen, moralischem Zerfall und einer Dunkelheit, die nicht nur um die Figuren herum existiert, sondern in ihnen.</p>
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-number">2</div>
+              <div class="about-stat-label">Veröffentlichte Bücher</div>
+            </div>
+            <div>
+              <div class="about-stat-number">2</div>
+              <div class="about-stat-label">Genres</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section class="books" id="books">
+    <div class="container">
+      <div class="books-header reveal">
+        <p class="section-label">Bibliografie</p>
+        <h2 class="section-title">Die Bücher</h2>
+      </div>
+
+      <!-- Book 1: 48 Stunden -->
+      <div class="book-card reveal">
+        <div class="book-cover">
+          <div class="book-cover-title">48<br>Stunden</div>
+          <div class="book-cover-author">M. Stoever</div>
+        </div>
+        <div class="book-info">
+          <span class="book-badge">Psychothriller</span>
+          <h3 class="book-title">48 Stunden</h3>
+          <p class="book-subtitle">Wie weit gehst du, wenn die Zeit gegen dich läuft?</p>
+          <p class="book-description">Ein Psychothriller, der unter die Haut geht. In nur zwei Tagen wird alles auf den Kopf gestellt – Vertrauen, Moral und die Frage, wozu ein Mensch fähig ist, wenn die Uhr tickt. Nichts ist, wie es scheint. Und das Ende ändert alles.</p>
+          <div class="book-meta">
+            <div class="book-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+              </svg>
+              Taschenbuch &amp; eBook
+            </div>
+            <div class="book-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              2025
+            </div>
+          </div>
+          <div class="book-links">
+            <a href="https://www.amazon.de/dp/B0GNCL93YY" target="_blank" rel="noopener noreferrer" class="btn-amazon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01zm14.58-2.33c-.24.36-.74.47-1.1.23-.01-.01-.02-.01-.03-.02-1.06-.78-2.28-1.19-3.55-1.19-.84 0-1.66.16-2.44.48-.24.1-.44-.05-.51-.29-.07-.24.04-.48.28-.59.91-.36 1.88-.55 2.86-.55 1.47 0 2.88.48 4.05 1.38.3.24.38.68.14.99l-.01.01-.01.01c-.06.09-.12.15-.17.19-.09.06-.17.1-.25.12a.573.573 0 01-.26-.03z"/><path d="M13.19 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.1 1.54h.05c.53-.89 1.77-1.76 3.54-1.76 1.48 0 3.78.88 3.78 4.54v6.36h-1.96v-6.14c0-1.72-.64-3.15-2.47-3.15-1.27 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39h-1.96v-7.76z"/><path d="M4.14 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.11 1.54h.04c.53-.89 1.78-1.76 3.55-1.76 1.48 0 3.78.88 3.78 4.54v6.36H11.3v-6.14c0-1.72-.64-3.15-2.47-3.15-1.28 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39H4.14v-7.76z"/></svg>
+              Auf Amazon ansehen
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 2: Schattenseele – COMING SOON -->
+      <div class="book-card reveal" style="position: relative; overflow: hidden;">
+        <div class="book-cover" style="position: relative;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,15,0.4); z-index: 2;"></div>
+          <div class="book-cover-title" style="position: relative; z-index: 3;">Schatten&shy;seele</div>
+          <div class="book-cover-author" style="position: relative; z-index: 3;">M. Stoever</div>
+        </div>
+        <div class="book-info">
+          <span class="book-badge" style="background: rgba(100, 40, 120, 0.2); color: #a855f7;">Coming Soon</span>
+          <h3 class="book-title">Schattenseele</h3>
+          <p class="book-subtitle" style="font-style: italic;">Was, wenn die Dunkelheit nicht um dich herum ist – sondern in dir?</p>
+          <p class="book-description">Eine Geschichte entsteht im Schatten. Innere Dämonen, moralischer Zerfall und die Frage, ob man der Dunkelheit entkommen kann, wenn sie Teil von einem selbst ist. Dark Fantasy, die keine Kompromisse macht – roh, intensiv und unvorhersehbar.</p>
+          <div style="display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: rgba(100, 40, 120, 0.08); border: 1px solid rgba(168, 85, 247, 0.15); margin-bottom: 1rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#a855f7" stroke-width="2" style="width: 20px; height: 20px; flex-shrink: 0; animation: scrollPulse 2s ease-in-out infinite;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <div style="font-size: 0.85rem; color: #a855f7; font-weight: 500;">In Arbeit</div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary);">Erscheint in Kürze – folge mir auf Amazon, um nichts zu verpassen.</div>
+            </div>
+          </div>
+          <div class="book-links">
+            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="btn-leseprobe" style="border-color: rgba(168, 85, 247, 0.3);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+              Benachrichtigen lassen
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text reveal">
+          <p class="section-label">Kontakt</p>
+          <h2 class="section-title">Schreib mir</h2>
+          <p>Du hast eine Frage, Feedback zu einem meiner Bücher oder möchtest dich einfach austauschen? Ich freue mich über jede Nachricht.</p>
+          <div class="contact-links">
+            <a href="mailto:mail.mstoever@web.de" class="contact-link">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+              <div>
+                <div class="contact-link-label">E-Mail</div>
+                <div class="contact-link-value">mail.mstoever@web.de</div>
+              </div>
+            </a>
+            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01z"/></svg>
+              <div>
+                <div class="contact-link-label">Amazon</div>
+                <div class="contact-link-value">Autorenseite auf Amazon</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-newsletter reveal">
+          <h3>Bleib auf dem Laufenden</h3>
+          <p>Erfahre als Erster, wenn ein neues Buch erscheint. Kein Spam – nur Neuigkeiten, die sich lohnen.</p>
+          <p class="newsletter-note">Newsletter kommt bald – folge mir in der Zwischenzeit auf Amazon, um keine Neuerscheinung zu verpassen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">M<span>.</span> Stoever</div>
+      <div class="footer-links">
+        <a href="#" onclick="openModal('impressum'); return false;">Impressum</a>
+        <a href="#" onclick="openModal('datenschutz'); return false;">Datenschutz</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 M. Stoever. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- IMPRESSUM MODAL -->
+  <div class="modal-overlay" id="impressum">
+    <button class="modal-close" onclick="closeModal('impressum')">&times;</button>
+    <div class="modal-content">
+      <h2>Impressum</h2>
+      <h3>Angaben gemäß § 5 TMG</h3>
+      <p>M. Stoever<br>Europa Allee 2a<br>30823 Garbsen</p>
+      <h3>Kontakt</h3>
+      <p>E-Mail: mail.mstoever@web.de</p>
+      <h3>Hinweis</h3>
+      <p>Diese Website dient ausschließlich der Vorstellung meiner Bücher und enthält Affiliate-Links zu Amazon. Es findet kein direkter Verkauf über diese Website statt.</p>
+      <h3>Haftung für Inhalte</h3>
+      <p>Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+      <h3>Haftung für Links</h3>
+      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+    </div>
+  </div>
+
+  <!-- DATENSCHUTZ MODAL -->
+  <div class="modal-overlay" id="datenschutz">
+    <button class="modal-close" onclick="closeModal('datenschutz')">&times;</button>
+    <div class="modal-content">
+      <h2>Datenschutzerklärung</h2>
+      <h3>1. Verantwortlicher</h3>
+      <p>M. Stoever<br>Europa Allee 2a, 30823 Garbsen<br>E-Mail: mail.mstoever@web.de</p>
+      <h3>2. Hosting</h3>
+      <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Besuch der Website werden automatisch Informationen (z.B. IP-Adresse, Zeitpunkt des Zugriffs) in Server-Logfiles gespeichert. Weitere Informationen: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener" style="color: var(--accent-glow);">Netlify Datenschutz</a></p>
+      <h3>3. Keine Cookies &amp; kein Tracking</h3>
+      <p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Tools. Es werden keine personenbezogenen Daten über Ihr Nutzungsverhalten erhoben.</p>
+      <h3>4. Externe Links</h3>
+      <p>Diese Website enthält Links zu Amazon. Wenn Sie auf einen dieser Links klicken, verlassen Sie diese Website. Für die Datenverarbeitung durch Amazon gilt deren Datenschutzerklärung.</p>
+      <h3>5. Ihre Rechte</h3>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Kontaktieren Sie mich dazu unter der oben genannten E-Mail-Adresse.</p>
+      <h3>6. Kontaktaufnahme per E-Mail</h3>
+      <p>Wenn Sie mir eine E-Mail senden, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Eine Weitergabe an Dritte findet nicht statt.</p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // === Navigation Scroll Effect ===
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // === Mobile Menu ===
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMenu() {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // === Scroll Reveal ===
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // === Modals ===
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => {
+          m.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
