@@ -8,20 +8,21 @@
   <meta name="author" content="M. Stoever">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="M. Stoever – Autor">
-  <meta property="og:description" content="Dark Fantasy & Psychothriller. Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast.">
-  <meta property="og:image" content="author.png">
+  <meta property="og:title" content="M. Stoever – Autor düsterer Geschichten">
+  <meta property="og:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
+  <meta property="og:url" content="https://mstoever.netlify.app">
+  <meta property="og:image" content="https://mstoever.netlify.app/author.png">
   <meta property="og:locale" content="de_DE">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="M. Stoever – Autor">
-  <meta name="twitter:description" content="Dark Fantasy & Psychothriller. Manche Geschichten lassen dich nicht los.">
-  <meta name="twitter:image" content="author.png">
+  <meta name="twitter:title" content="M. Stoever – Autor düsterer Geschichten">
+  <meta name="twitter:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
+  <meta name="twitter:image" content="https://mstoever.netlify.app/author.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,15 +148,25 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(139, 47, 63, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(60, 20, 80, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 100%, rgba(139, 47, 63, 0.05) 0%, transparent 40%);
+        radial-gradient(ellipse at 20% 50%, rgba(139, 47, 63, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(60, 20, 80, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(139, 47, 63, 0.06) 0%, transparent 40%);
       pointer-events: none;
+    }
+
+    /* Fog / Mist Canvas */
+    #fog-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 800px;
     }
 
@@ -179,6 +190,7 @@
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.5s;
+      text-shadow: 0 0 40px rgba(139, 47, 63, 0.15);
     }
 
     .hero-quote {
@@ -238,6 +250,7 @@
       text-transform: uppercase;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 1.2s;
+      z-index: 2;
     }
 
     .hero-scroll-hint .line {
@@ -285,6 +298,24 @@
 
     .about-image-wrapper {
       position: relative;
+    }
+
+    .about-image-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--bg-card) 0%, #1a1520 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .about-image-placeholder svg {
+      width: 48px; height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.4;
     }
 
     .about-image-wrapper::after {
@@ -490,78 +521,6 @@
     .btn-leseprobe:hover {
       border-color: var(--accent);
       background: var(--accent-subtle);
-    }
-
-    /* ===== COMING SOON VARIANT ===== */
-    .book-card--coming-soon { position: relative; overflow: hidden; }
-
-    .book-card--coming-soon .book-cover-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(10, 10, 15, 0.4);
-      z-index: 2;
-    }
-
-    .book-card--coming-soon .book-cover-title,
-    .book-card--coming-soon .book-cover-author {
-      position: relative;
-      z-index: 3;
-    }
-
-    .book-badge--fantasy {
-      background: rgba(100, 40, 120, 0.2);
-      color: #a855f7;
-    }
-
-    .book-subtitle--italic { font-style: italic; }
-
-    .book-status {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1rem 1.2rem;
-      background: rgba(100, 40, 120, 0.08);
-      border: 1px solid rgba(168, 85, 247, 0.15);
-      margin-bottom: 1rem;
-    }
-
-    .book-status svg {
-      width: 20px; height: 20px;
-      flex-shrink: 0;
-      color: #a855f7;
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    .book-status-title {
-      font-size: 0.85rem;
-      color: #a855f7;
-      font-weight: 500;
-    }
-
-    .book-status-text {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-
-    .btn-leseprobe--fantasy { border-color: rgba(168, 85, 247, 0.3); }
-
-    .btn-leseprobe--fantasy:hover {
-      border-color: #a855f7;
-      background: rgba(100, 40, 120, 0.15);
-    }
-
-    /* Book cover with real image */
-    .book-cover--image {
-      padding: 0;
-      border: none;
-    }
-
-    .book-cover--image::before { display: none; }
-
-    .book-cover--image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     /* ===== CONTACT ===== */
@@ -814,6 +773,7 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
+    <canvas id="fog-canvas"></canvas>
     <div class="hero-content">
       <p class="hero-tagline">Dark Fantasy &amp; Psychothriller</p>
       <h1 class="hero-title">M. Stoever</h1>
@@ -836,14 +796,14 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper reveal">
-          <img src="author.png" alt="M. Stoever – Autor" loading="lazy" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center; border: 1px solid var(--border);">
+          <img src="author.png" alt="M. Stoever – Autor" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center; border: 1px solid var(--border);">
         </div>
         <div class="about-text reveal">
           <p class="section-label">Über den Autor</p>
           <h2 class="section-title">Die Dunkelheit hat eine Geschichte – und ich schreibe sie auf.</h2>
           <p>Manche Geschichten beginnen nicht mit einem Anfang, sondern mit einem Gefühl – einem Schatten, der sich in den Gedanken festsetzt und nicht mehr loslässt. Genau dort setzt M. Stoever an.</p>
           <p>Als Autor bewegt er sich zwischen den Genres Dark Fantasy und Psychothriller. Seine Geschichten leben von psychologischer Tiefe, düsteren Welten und Figuren, die an den Grenzen ihrer Menschlichkeit wandeln. Keine strahlenden Helden, keine einfachen Antworten – nur die Abgründe, die sich auftun, wenn man genau genug hinschaut.</p>
-          <p>Mit „48 Stunden" erschien sein Debüt im Bereich Psychothriller, mit „Schleiermond" folgt eine Geschichte, die tief in die Welt der dunklen Fantasie eintaucht – geprägt von inneren Dämonen, moralischem Zerfall und einer Dunkelheit, die nicht nur um die Figuren herum existiert, sondern in ihnen.</p>
+          <p>Mit „48 Stunden" erschien sein Debüt im Bereich Psychothriller, mit „Schattenseele" folgt eine Geschichte, die tief in die Welt der dunklen Fantasie eintaucht – geprägt von inneren Dämonen, moralischem Zerfall und einer Dunkelheit, die nicht nur um die Figuren herum existiert, sondern in ihnen.</p>
           <div class="about-stats">
             <div>
               <div class="about-stat-number">2</div>
@@ -869,14 +829,14 @@
 
       <!-- Book 1: 48 Stunden -->
       <div class="book-card reveal">
-        <div class="book-cover book-cover--image">
-          <img src="48_Stunden_cover.jpg" alt="48 Stunden – M. Stoever" loading="lazy">
+        <div class="book-cover" style="padding: 0; border: none;">
+          <img src="48_Stunden_cover.jpg" alt="48 Stunden – M. Stoever" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="book-info">
           <span class="book-badge">Psychothriller</span>
           <h3 class="book-title">48 Stunden</h3>
-          <p class="book-subtitle">Ein Psychothriller, der unter die Haut geht. </p>
-          <p class="book-description">Zimmer 317. Kein Ausgang. Keine Erinnerung. Fünf Menschen, die sich nicht kennen – und einer von ihnen hat Blut an den Händen. In den nächsten 48 Stunden wird die Wahrheit ans Licht kommen. Aber nicht alle werden sie überleben.</p>
+          <p class="book-subtitle">Wie weit gehst du, wenn die Zeit gegen dich läuft?</p>
+          <p class="book-description">Ein Psychothriller, der unter die Haut geht. In nur zwei Tagen wird alles auf den Kopf gestellt – Vertrauen, Moral und die Frage, wozu ein Mensch fähig ist, wenn die Uhr tickt. Nichts ist, wie es scheint. Und das Ende ändert alles.</p>
           <div class="book-meta">
             <div class="book-meta-item">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -901,35 +861,29 @@
       </div>
 
       <!-- Book 2: Schattenseele – COMING SOON -->
-      <div class="book-card book-card--coming-soon reveal">
-        <div class="book-cover">
-          <div class="book-cover-overlay"></div>
-          <div class="book-cover-title">Schleier&shy;mond</div>
-          <div class="book-cover-author">M. Stoever</div>
+      <div class="book-card reveal" style="position: relative; overflow: hidden;">
+        <div class="book-cover" style="position: relative;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,15,0.4); z-index: 2;"></div>
+          <div class="book-cover-title" style="position: relative; z-index: 3;">Schatten&shy;seele</div>
+          <div class="book-cover-author" style="position: relative; z-index: 3;">M. Stoever</div>
         </div>
         <div class="book-info">
-          <span class="book-badge book-badge--fantasy">Coming Soon</span>
-          <h3 class="book-title">Schleiermond</h3>
-          <p class="book-subtitle book-subtitle--italic">Schleiermond ist eine Dark Fantasy Romance über Kaia, eine tödliche Schattenjägerin, und ihren
-geraubten Schatten-Zwilling Nyx.</p>
-          <p class="book-description">Als Siebenjährige wurde sie von ihm getrennt, weil ihre
-Verbindung zu mächtig war. Fünfzehn Jahre wurde sie zur emotionslosen Waffe trainiert, die
-Schatten jagt und tötet. Als Nyx zurückkehrt und sie sich verschmelzen, entfesseln sie eine
-Prophezeiung, die die Welt zwischen Licht und Schatten für immer verändern wird. Eine
-Geschichte über verbotene Liebe, Erlösung und den Preis der Einheit – düster, sinnlich und
-emotional brutal ehrlich.</p>
-          <div class="book-status">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <span class="book-badge" style="background: rgba(100, 40, 120, 0.2); color: #a855f7;">Coming Soon</span>
+          <h3 class="book-title">Schattenseele</h3>
+          <p class="book-subtitle" style="font-style: italic;">Was, wenn die Dunkelheit nicht um dich herum ist – sondern in dir?</p>
+          <p class="book-description">Eine Geschichte entsteht im Schatten. Innere Dämonen, moralischer Zerfall und die Frage, ob man der Dunkelheit entkommen kann, wenn sie Teil von einem selbst ist. Dark Fantasy, die keine Kompromisse macht – roh, intensiv und unvorhersehbar.</p>
+          <div style="display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: rgba(100, 40, 120, 0.08); border: 1px solid rgba(168, 85, 247, 0.15); margin-bottom: 1rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#a855f7" stroke-width="2" style="width: 20px; height: 20px; flex-shrink: 0; animation: scrollPulse 2s ease-in-out infinite;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <div class="book-status-title">In Arbeit</div>
-              <div class="book-status-text">Erscheint in Kürze – folge mir auf Amazon, um nichts zu verpassen.</div>
+              <div style="font-size: 0.85rem; color: #a855f7; font-weight: 500;">In Arbeit</div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary);">Erscheint in Kürze – folge mir auf Amazon, um nichts zu verpassen.</div>
             </div>
           </div>
           <div class="book-links">
-            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="btn-leseprobe btn-leseprobe--fantasy">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="btn-leseprobe" style="border-color: rgba(168, 85, 247, 0.3);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
               </svg>
               Benachrichtigen lassen
@@ -950,7 +904,7 @@ emotional brutal ehrlich.</p>
           <h2 class="section-title">Schreib mir</h2>
           <p>Du hast eine Frage, Feedback zu einem meiner Bücher oder möchtest dich einfach austauschen? Ich freue mich über jede Nachricht.</p>
           <div class="contact-links">
-            <a href="mailto:mail.mstoever@web.de" class="contact-link" aria-label="E-Mail an M. Stoever senden">
+            <a href="mailto:mail.mstoever@web.de" class="contact-link">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
@@ -959,8 +913,8 @@ emotional brutal ehrlich.</p>
                 <div class="contact-link-value">mail.mstoever@web.de</div>
               </div>
             </a>
-            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Autorenseite auf Amazon besuchen">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01zm14.58-2.33c-.24.36-.74.47-1.1.23-.01-.01-.02-.01-.03-.02-1.06-.78-2.28-1.19-3.55-1.19-.84 0-1.66.16-2.44.48-.24.1-.44-.05-.51-.29-.07-.24.04-.48.28-.59.91-.36 1.88-.55 2.86-.55 1.47 0 2.88.48 4.05 1.38.3.24.38.68.14.99l-.01.01-.01.01c-.06.09-.12.15-.17.19-.09.06-.17.1-.25.12a.573.573 0 01-.26-.03z"/><path d="M13.19 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.1 1.54h.05c.53-.89 1.77-1.76 3.54-1.76 1.48 0 3.78.88 3.78 4.54v6.36h-1.96v-6.14c0-1.72-.64-3.15-2.47-3.15-1.27 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39h-1.96v-7.76z"/><path d="M4.14 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.11 1.54h.04c.53-.89 1.78-1.76 3.55-1.76 1.48 0 3.78.88 3.78 4.54v6.36H11.3v-6.14c0-1.72-.64-3.15-2.47-3.15-1.28 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39H4.14v-7.76z"/></svg>
+            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01z"/></svg>
               <div>
                 <div class="contact-link-label">Amazon</div>
                 <div class="contact-link-value">Autorenseite auf Amazon</div>
@@ -985,7 +939,7 @@ emotional brutal ehrlich.</p>
         <a href="#" onclick="openModal('impressum'); return false;">Impressum</a>
         <a href="#" onclick="openModal('datenschutz'); return false;">Datenschutz</a>
       </div>
-      <p class="footer-copy">&copy; <span id="currentYear"></span> M. Stoever. Alle Rechte vorbehalten.</p>
+      <p class="footer-copy">&copy; 2025 M. Stoever. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 
@@ -1029,9 +983,6 @@ emotional brutal ehrlich.</p>
 
   <!-- JAVASCRIPT -->
   <script>
-    // === Dynamic Year ===
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
     // === Navigation Scroll Effect ===
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -1087,6 +1038,83 @@ emotional brutal ehrlich.</p>
         });
       }
     });
+
+    // === Atmospheric Fog / Particle Effect ===
+    (function() {
+      const canvas = document.getElementById('fog-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+
+      function resize() {
+        const hero = document.getElementById('hero');
+        w = canvas.width = hero.offsetWidth;
+        h = canvas.height = hero.offsetHeight;
+      }
+
+      function createParticles() {
+        particles = [];
+        const count = Math.floor((w * h) / 12000);
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 2 + 0.5,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: (Math.random() - 0.5) * 0.15,
+            opacity: Math.random() * 0.4 + 0.05,
+            pulse: Math.random() * Math.PI * 2,
+            pulseSpeed: Math.random() * 0.01 + 0.005
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        // Soft fog layers
+        const fogGrad1 = ctx.createRadialGradient(w * 0.3, h * 0.7, 0, w * 0.3, h * 0.7, w * 0.5);
+        fogGrad1.addColorStop(0, 'rgba(139, 47, 63, 0.03)');
+        fogGrad1.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogGrad1;
+        ctx.fillRect(0, 0, w, h);
+
+        const fogGrad2 = ctx.createRadialGradient(w * 0.7, h * 0.3, 0, w * 0.7, h * 0.3, w * 0.4);
+        fogGrad2.addColorStop(0, 'rgba(80, 30, 100, 0.025)');
+        fogGrad2.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogGrad2;
+        ctx.fillRect(0, 0, w, h);
+
+        // Particles
+        for (const p of particles) {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.pulse += p.pulseSpeed;
+
+          if (p.x < -10) p.x = w + 10;
+          if (p.x > w + 10) p.x = -10;
+          if (p.y < -10) p.y = h + 10;
+          if (p.y > h + 10) p.y = -10;
+
+          const alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(200, 180, 190, ${alpha})`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      createParticles();
+      draw();
+
+      window.addEventListener('resize', () => {
+        resize();
+        createParticles();
+      });
+    })();
   </script>
 
 </body>
