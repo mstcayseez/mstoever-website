@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M. Stoever – Autor</title>
-  <meta name="description" content="M. Stoever – Autor düsterer Geschichten. Dark Fantasy & Psychothriller. Entdecke die Bücher.">
-  <meta name="author" content="M. Stoever">
+  <title>M.STOEVER – Autor</title>
+  <meta name="description" content="M.STOEVER – Autor düsterer Geschichten. Dark Fantasy & Psychothriller. Entdecke die Bücher.">
+  <meta name="author" content="M.STOEVER">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="M. Stoever – Autor düsterer Geschichten">
+  <meta property="og:title" content="M.STOEVER – Autor düsterer Geschichten">
   <meta property="og:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
   <meta property="og:url" content="https://mstoever.netlify.app">
   <meta property="og:image" content="https://mstoever.netlify.app/author.png">
@@ -22,7 +22,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="M. Stoever – Autor düsterer Geschichten">
+  <meta name="twitter:title" content="M.STOEVER – Autor düsterer Geschichten">
   <meta name="twitter:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
   <meta name="twitter:image" content="https://mstoever.netlify.app/author.png">
 
@@ -186,15 +186,19 @@
     }
 
     .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 300;
       line-height: 1.1;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.5s;
       text-shadow: 0 0 40px rgba(139, 47, 63, 0.15);
     }
+
+    .hero-title span { color: var(--accent-glow); }
 
     .hero-quote {
       font-family: var(--font-display);
@@ -795,7 +799,7 @@
     <canvas id="fog-canvas"></canvas>
     <div class="hero-content">
       <p class="hero-tagline">Dark Fantasy &amp; Psychothriller</p>
-      <h1 class="hero-title">M. Stoever</h1>
+      <h1 class="hero-title">M<span>.</span>STOEVER</h1>
       <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
       <a href="#books" class="hero-cta">
         Entdecke die Bücher
