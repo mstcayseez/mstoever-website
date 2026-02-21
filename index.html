@@ -180,11 +180,14 @@
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--accent-glow);
+      color: var(--text-secondary);
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.3s;
     }
+
+    .hero-tagline .genre-fantasy { color: #a855f7; }
+    .hero-tagline .genre-thriller { color: var(--accent-glow); }
 
     .hero-title {
       font-family: var(--font-body);
@@ -799,7 +802,7 @@
   <section class="hero" id="hero">
     <canvas id="fog-canvas"></canvas>
     <div class="hero-content">
-      <p class="hero-tagline">Dark Fantasy &amp; Psychothriller</p>
+      <p class="hero-tagline"><span class="genre-fantasy">Dark Fantasy</span> &amp; <span class="genre-thriller">Psychothriller</span></p>
       <h1 class="hero-title">M<span>.</span>STOEVER</h1>
       <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
       <a href="#books" class="hero-cta">
