@@ -388,7 +388,7 @@
       border: 1px solid var(--border);
       padding: 2.5rem;
       margin-bottom: 3rem;
-      transition: border-color 0.3s, transform 0.3s;
+      transition: border-color 0.3s;
     }
 
     .book-card:hover {
@@ -679,7 +679,11 @@
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
+    }
+
+    .reveal.done {
+      transition: none;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -859,7 +863,7 @@
       <!-- Book 1: 48 Stunden -->
       <div class="book-card reveal">
         <div class="book-cover book-cover--image" style="padding: 0; border: none;">
-          <img src="48_Stunden_cover.jpg" alt="48 Stunden – M. Stoever" loading="lazy" decoding="async" width="1600" height="2560" style="width: 100%; height: 100%; object-fit: cover; image-rendering: auto;">
+          <img src="48_Stunden_cover.jpg" alt="48 Stunden – M. Stoever" loading="lazy" decoding="async" width="560" height="896" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="book-info">
           <span class="book-badge">Psychothriller</span>
@@ -1122,6 +1126,10 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          entry.target.addEventListener('transitionend', function handler() {
+            entry.target.classList.add('done');
+            entry.target.removeEventListener('transitionend', handler);
+          });
           observer.unobserve(entry.target);
         }
       });
