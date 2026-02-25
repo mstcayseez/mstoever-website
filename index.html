@@ -97,12 +97,15 @@
       text-transform: uppercase;
     }
 
-    .nav-logo span, .hero-title span, .footer-logo span {
-      color: var(--accent-glow);
-      font-size: 0.6em;
+    .nav-logo .dot, .hero-title .dot, .footer-logo .dot {
+      display: inline-block;
+      width: 0.35em;
+      height: 0.35em;
+      background: var(--accent-glow);
       vertical-align: baseline;
       position: relative;
-      top: 0.25em;
+      top: -0.1em;
+      margin: 0 0.02em;
     }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -261,8 +264,8 @@
     .hero-scroll-hint {
       position: absolute;
       bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      right: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -333,8 +336,8 @@
       display: block;
       filter: saturate(0.3) contrast(1.15) brightness(0.9);
       transition: filter 0.5s ease;
-      mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, black 30%, transparent 72%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, black 30%, transparent 72%);
+      mask-image: radial-gradient(ellipse 70% 55% at 50% 50%, black 25%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 50%, black 25%, transparent 70%);
     }
 
     .about-image-wrapper:hover img {
@@ -854,7 +857,7 @@
 
   <!-- NAVIGATION -->
   <nav class="nav" id="nav">
-    <a href="#" class="nav-logo">M<span>▪</span>STOEVER</a>
+    <a href="#" class="nav-logo">M<span class="dot"></span>STOEVER</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeMenu()">Über mich</a></li>
       <li><a href="#books" onclick="closeMenu()">Bücher</a></li>
@@ -870,7 +873,7 @@
     <canvas id="fog-canvas"></canvas>
     <div class="hero-content">
       <p class="hero-tagline">P S Y C H O T H R I L L E R</p>
-      <h1 class="hero-title">M<span>▪</span>STOEVER</h1>
+      <h1 class="hero-title">M<span class="dot"></span>STOEVER</h1>
       <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
       <a href="#books" class="hero-cta">
         Entdecke die Bücher
@@ -1053,7 +1056,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-logo">M<span>▪</span>STOEVER</div>
+      <div class="footer-logo">M<span class="dot"></span>STOEVER</div>
       <div class="footer-links">
         <a href="#" onclick="openModal('impressum'); return false;">Impressum</a>
         <a href="#" onclick="openModal('datenschutz'); return false;">Datenschutz</a>
