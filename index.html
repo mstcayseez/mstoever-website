@@ -97,7 +97,15 @@
       text-transform: uppercase;
     }
 
-    .nav-logo span { color: var(--accent-glow); }
+    .nav-logo span, .hero-title span, .footer-logo span {
+      display: inline-block;
+      width: 0.3em;
+      height: 0.3em;
+      background: var(--accent-glow);
+      font-size: 0;
+      vertical-align: middle;
+      margin: 0 0.05em;
+    }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
 
@@ -209,8 +217,6 @@
       animation: fadeUp 0.8s ease forwards 0.5s;
       text-shadow: 0 0 40px rgba(139, 47, 63, 0.12), 0 0 80px rgba(184, 148, 58, 0.06);
     }
-
-    .hero-title span { color: var(--accent-glow); }
 
     .hero-quote {
       font-family: var(--font-display);
@@ -660,8 +666,6 @@
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
-
-    .footer-logo span { color: var(--accent-glow); }
 
     .footer-links {
       display: flex;
