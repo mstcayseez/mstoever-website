@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M.STOEVER – Autor</title>
-  <meta name="description" content="M.STOEVER – Autor düsterer Geschichten. Dark Fantasy & Psychothriller. Entdecke die Bücher.">
+  <meta name="description" content="M.STOEVER – Autor düsterer Geschichten. Psychothriller, die unter die Haut gehen.">
   <meta name="author" content="M.STOEVER">
 
   <!-- Favicon -->
@@ -15,7 +15,7 @@
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="M.STOEVER – Autor düsterer Geschichten">
-  <meta property="og:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
+  <meta property="og:description" content="Psychothriller, die unter die Haut gehen. Geschichten über menschliche Abgründe.">
   <meta property="og:url" content="https://mstoever.netlify.app">
   <meta property="og:image" content="https://mstoever.netlify.app/author.png">
   <meta property="og:locale" content="de_DE">
@@ -23,7 +23,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="M.STOEVER – Autor düsterer Geschichten">
-  <meta name="twitter:description" content="Dark Fantasy & Psychothriller. Geschichten, die unter die Haut gehen.">
+  <meta name="twitter:description" content="Psychothriller, die unter die Haut gehen. Geschichten über menschliche Abgründe.">
   <meta name="twitter:image" content="https://mstoever.netlify.app/author.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,9 +39,18 @@
       --bg-card-hover: #1a1a25;
       --text-primary: #e8e6e3;
       --text-secondary: #9a9a9a;
+
+      /* 48 Stunden – Rot */
       --accent: #8b2f3f;
       --accent-glow: #b33a4f;
       --accent-subtle: rgba(139, 47, 63, 0.15);
+
+      /* MOLDOW / Neues Projekt – Gold */
+      --gold: #b8943a;
+      --gold-glow: #d4a843;
+      --gold-dark: #6b5520;
+      --gold-subtle: rgba(184, 148, 58, 0.12);
+
       --border: rgba(255, 255, 255, 0.06);
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'Inter', -apple-system, sans-serif;
@@ -147,14 +156,16 @@
       overflow: hidden;
     }
 
+    /* Dual atmosphere: Red left (48 Stunden) + Gold right (MOLDOW) */
     .hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(139, 47, 63, 0.1) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(60, 20, 80, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 100%, rgba(139, 47, 63, 0.06) 0%, transparent 40%);
+        radial-gradient(ellipse at 15% 50%, rgba(139, 47, 63, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 45%, rgba(184, 148, 58, 0.09) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(107, 85, 32, 0.06) 0%, transparent 35%),
+        radial-gradient(ellipse at 50% 0%, rgba(139, 47, 63, 0.04) 0%, transparent 40%);
       pointer-events: none;
     }
 
@@ -180,14 +191,11 @@
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--text-secondary);
+      color: var(--accent-glow);
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.3s;
     }
-
-    .hero-tagline .genre-fantasy { color: #a855f7; }
-    .hero-tagline .genre-thriller { color: var(--accent-glow); }
 
     .hero-title {
       font-family: var(--font-body);
@@ -199,7 +207,7 @@
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.5s;
-      text-shadow: 0 0 40px rgba(139, 47, 63, 0.15);
+      text-shadow: 0 0 40px rgba(139, 47, 63, 0.12), 0 0 80px rgba(184, 148, 58, 0.06);
     }
 
     .hero-title span { color: var(--accent-glow); }
@@ -266,7 +274,7 @@
 
     .hero-scroll-hint .line {
       width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--accent-glow), transparent);
+      background: linear-gradient(to bottom, var(--accent-glow), var(--gold), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
@@ -280,6 +288,10 @@
       text-transform: uppercase;
       color: var(--accent-glow);
       margin-bottom: 1rem;
+    }
+
+    .section-label--gold {
+      color: var(--gold-glow);
     }
 
     .section-title {
@@ -309,24 +321,6 @@
 
     .about-image-wrapper {
       position: relative;
-    }
-
-    .about-image-placeholder {
-      aspect-ratio: 1/1;
-      background: linear-gradient(135deg, var(--bg-card) 0%, #1a1520 100%);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    .about-image-placeholder svg {
-      width: 48px; height: 48px;
-      margin-bottom: 1rem;
-      opacity: 0.4;
     }
 
     .about-image-wrapper::after {
@@ -365,6 +359,10 @@
       color: var(--accent-glow);
     }
 
+    .about-stat-number--gold {
+      color: var(--gold-glow);
+    }
+
     .about-stat-label {
       font-size: 0.75rem;
       color: var(--text-secondary);
@@ -388,12 +386,16 @@
       border: 1px solid var(--border);
       padding: 2.5rem;
       margin-bottom: 3rem;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, transform 0.3s;
     }
 
     .book-card:hover {
       border-color: rgba(139, 47, 63, 0.3);
       transform: translateY(-3px);
+    }
+
+    .book-card--gold:hover {
+      border-color: rgba(184, 148, 58, 0.3);
     }
 
     .book-cover {
@@ -418,6 +420,17 @@
     }
 
     .book-cover--image::before { display: none; }
+
+    /* Gold cover for new project */
+    .book-cover--gold {
+      background: linear-gradient(135deg, #1a1710 0%, #0f0e0a 100%);
+    }
+
+    .book-cover--gold::before {
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(184, 148, 58, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, rgba(107, 85, 32, 0.06) 0%, transparent 50%);
+    }
 
     .book-cover-title {
       font-family: var(--font-display);
@@ -451,6 +464,11 @@
       padding: 0.3rem 0.8rem;
       margin-bottom: 1rem;
       width: fit-content;
+    }
+
+    .book-badge--gold {
+      color: var(--gold-glow);
+      background: var(--gold-subtle);
     }
 
     .book-title {
@@ -534,6 +552,11 @@
     .btn-leseprobe:hover {
       border-color: var(--accent);
       background: var(--accent-subtle);
+    }
+
+    .btn-leseprobe--gold:hover {
+      border-color: var(--gold);
+      background: var(--gold-subtle);
     }
 
     /* ===== CONTACT ===== */
@@ -671,6 +694,18 @@
       50% { opacity: 1; }
     }
 
+    @keyframes goldPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes sporeDrift {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-60px) translateX(15px); opacity: 0; }
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -684,6 +719,24 @@
 
     .reveal.done {
       transition: none;
+    }
+
+    /* ===== NEW PROJECT COVER SPORE EFFECT ===== */
+    .spore-container {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .spore {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: radial-gradient(circle, rgba(212, 168, 67, 0.6) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sporeDrift 6s ease-in-out infinite;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -725,7 +778,7 @@
       .btn-amazon, .btn-leseprobe { width: 100%; justify-content: center; }
     }
 
-    /* ===== IMPRESSUM / DATENSCHUTZ PAGES (inline modal) ===== */
+    /* ===== IMPRESSUM / DATENSCHUTZ / LESEPROBE MODALS ===== */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -810,7 +863,7 @@
   <section class="hero" id="hero">
     <canvas id="fog-canvas"></canvas>
     <div class="hero-content">
-      <p class="hero-tagline"><span class="genre-fantasy">Dark Fantasy</span> &amp; <span class="genre-thriller">Psychothriller</span></p>
+      <p class="hero-tagline">P S Y C H O T H R I L L E R</p>
       <h1 class="hero-title">M<span>.</span>STOEVER</h1>
       <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
       <a href="#books" class="hero-cta">
@@ -836,17 +889,19 @@
         <div class="about-text reveal">
           <p class="section-label">Über den Autor</p>
           <h2 class="section-title">Die Dunkelheit hat eine Geschichte – und ich schreibe sie auf.</h2>
-          <p>Manche Geschichten beginnen nicht mit einem Anfang, sondern mit einem Gefühl – einem Schatten, der sich in den Gedanken festsetzt und nicht mehr loslässt. Genau dort setzt M. Stoever an.</p>
-          <p>Als Autor bewegt er sich zwischen den Genres Dark Fantasy und Psychothriller. Seine Geschichten leben von psychologischer Tiefe, düsteren Welten und Figuren, die an den Grenzen ihrer Menschlichkeit wandeln. Keine strahlenden Helden, keine einfachen Antworten – nur die Abgründe, die sich auftun, wenn man genau genug hinschaut.</p>
-          <p>Mit „48 Stunden" erschien sein Debüt im Bereich Psychothriller, mit „Schleiermond" folgt eine Geschichte, die tief in die Welt der dunklen Fantasie eintaucht – geprägt von inneren Dämonen, moralischem Zerfall und einer Dunkelheit, die nicht nur um die Figuren herum existiert, sondern in ihnen.</p>
+          <p>Manche Geschichten beginnen nicht mit einem Anfang, sondern mit einem Gefühl. Einem Unbehagen, das sich festsetzt. Einem Satz, der hängen bleibt, lange nachdem man das Buch zugeklappt hat. Genau dort setze ich an.</p>
+          <p>Ich schreibe Psychothriller. Geschichten über Menschen, die in Situationen geraten, in denen die Regeln nicht mehr gelten – in denen sich zeigt, wer sie wirklich sind, wenn alles wegfällt, was sie bisher geschützt hat. Keine strahlenden Helden. Keine einfachen Antworten. Nur die Frage, wie dünn die Schicht ist zwischen dem, was wir zeigen, und dem, was darunter liegt.</p>
+          <p>Meine Figuren sind keine Opfer und keine Monster. Sie sind Menschen mit Fehlern, blinden Flecken und Entscheidungen, die sie nicht mehr rückgängig machen können. Die Spannung in meinen Büchern kommt nicht aus Verfolgungsjagden oder Plottwists – sie kommt aus dem Moment, in dem du merkst, dass du die Person, die du gerade liest, vielleicht besser verstehst, als dir lieb ist.</p>
+          <p>Das Schreiben war schon immer da – als stiller Begleiter, als Ventil, als Obsession. Jahrelang entstanden die Geschichten nur für die Schublade, bis der Mut kam, sie in die Welt zu lassen. Mit „48 Stunden" erschien 2025 mein Debüt – ein Kammerspiel über fünf Fremde in einem verschlossenen Hotelzimmer, Schuld, Manipulation und die Frage, ob Wahrheit etwas ist, das man ertragen will. Das nächste Buch ist in Arbeit. Andere Figuren, anderer Ort – aber die gleiche Frage: Was passiert mit Menschen, wenn der Boden unter ihnen wegbricht?</p>
+          <p>Ich lebe in Norddeutschland, trinke zu viel Kaffee, schreibe am liebsten nachts – und teile mein Leben mit zwei chaotischen Katzen, die vermutlich die wahren Herrscher im Haushalt sind.</p>
           <div class="about-stats">
             <div>
-              <div class="about-stat-number">2</div>
-              <div class="about-stat-label">Veröffentlichte Bücher</div>
+              <div class="about-stat-number">1</div>
+              <div class="about-stat-label">Veröffentlicht</div>
             </div>
             <div>
-              <div class="about-stat-number">2</div>
-              <div class="about-stat-label">Genres</div>
+              <div class="about-stat-number about-stat-number--gold">1</div>
+              <div class="about-stat-label">In Arbeit</div>
             </div>
           </div>
         </div>
@@ -901,29 +956,35 @@
         </div>
       </div>
 
-      <!-- Book 2: Schleiermond – COMING SOON -->
-      <div class="book-card reveal" style="position: relative; overflow: hidden;">
-        <div class="book-cover" style="position: relative;">
-          <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,15,0.4); z-index: 2;"></div>
-          <div class="book-cover-title" style="position: relative; z-index: 3;">Schleier&shy;mond</div>
-          <div class="book-cover-author" style="position: relative; z-index: 3;">M. Stoever</div>
+      <!-- Book 2: Neues Projekt (Gold) -->
+      <div class="book-card book-card--gold reveal" style="position: relative; overflow: hidden;">
+        <div class="book-cover book-cover--gold" style="position: relative;">
+          <!-- Subtle spore particles -->
+          <div class="spore-container" id="sporeContainer"></div>
+          <!-- Mystery icon -->
+          <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgba(184, 148, 58, 0.4)" stroke-width="1" style="width: 64px; height: 64px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <div style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em;">2026</div>
+          </div>
         </div>
         <div class="book-info">
-          <span class="book-badge" style="background: rgba(100, 40, 120, 0.2); color: #a855f7;">Coming Soon</span>
-          <h3 class="book-title">Schleiermond</h3>
-          <p class="book-subtitle" style="font-style: italic;">Schleiermond ist eine Dark Fantasy Romance über Kaia, eine tödliche Schattenjägerin, und ihren geraubten Schatten-Zwilling Nyx.</p>
-          <p class="book-description">Als Siebenjährige wurde sie von ihm getrennt, weil ihre Verbindung zu mächtig war. Fünfzehn Jahre wurde sie zur emotionslosen Waffe trainiert, die Schatten jagt und tötet. Als Nyx zurückkehrt und sie sich verschmelzen, entfesseln sie eine Prophezeiung, die die Welt zwischen Licht und Schatten für immer verändern wird. Eine Geschichte über verbotene Liebe, Erlösung und den Preis der Einheit – düster, sinnlich und emotional brutal ehrlich.</p>
-          <div style="display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: rgba(100, 40, 120, 0.08); border: 1px solid rgba(168, 85, 247, 0.15); margin-bottom: 1rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#a855f7" stroke-width="2" style="width: 20px; height: 20px; flex-shrink: 0; animation: scrollPulse 2s ease-in-out infinite;">
+          <span class="book-badge book-badge--gold">In Arbeit</span>
+          <h3 class="book-title">Neues Projekt</h3>
+          <p class="book-subtitle" style="font-style: italic; color: var(--gold);">Psychothriller</p>
+          <p class="book-description">Andere Figuren. Anderer Ort. Die gleiche Dunkelheit.<br><br>Was passiert mit Menschen, wenn der Boden unter ihnen wegbricht? Wenn die Regeln, an die sie geglaubt haben, nicht mehr gelten? Wenn das, was sie zusammenhält, gleichzeitig das ist, was sie zerstört?</p>
+          <div style="display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: var(--gold-subtle); border: 1px solid rgba(184, 148, 58, 0.15); margin-bottom: 1rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="var(--gold-glow)" stroke-width="2" style="width: 20px; height: 20px; flex-shrink: 0; animation: goldPulse 2.5s ease-in-out infinite;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <div style="font-size: 0.85rem; color: #a855f7; font-weight: 500;">In Arbeit</div>
-              <div style="font-size: 0.8rem; color: var(--text-secondary);">Erscheint in Kürze – folge mir auf Amazon, um nichts zu verpassen.</div>
+              <div style="font-size: 0.85rem; color: var(--gold-glow); font-weight: 500;">In Arbeit · 2026</div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary);">Folge mir auf Amazon oder Instagram, um nichts zu verpassen.</div>
             </div>
           </div>
           <div class="book-links">
-            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="btn-leseprobe" style="border-color: rgba(168, 85, 247, 0.3);">
+            <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="btn-leseprobe btn-leseprobe--gold" style="border-color: rgba(184, 148, 58, 0.3);">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
               </svg>
@@ -945,13 +1006,13 @@
           <h2 class="section-title">Schreib mir</h2>
           <p>Du hast eine Frage, Feedback zu einem meiner Bücher oder möchtest dich einfach austauschen? Ich freue mich über jede Nachricht.</p>
           <div class="contact-links">
-            <a href="mailto:mail.mstoever@web.de" class="contact-link">
+            <a href="mailto:kontakt@mstoever.de" class="contact-link">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
               <div>
                 <div class="contact-link-label">E-Mail</div>
-                <div class="contact-link-value">mail.mstoever@web.de</div>
+                <div class="contact-link-value">kontakt@mstoever.de</div>
               </div>
             </a>
             <a href="https://www.amazon.de/stores/M.-Stoever/author/B0GNK4B8BG" target="_blank" rel="noopener noreferrer" class="contact-link">
@@ -1003,7 +1064,7 @@
       <h3>Angaben gemäß § 5 TMG</h3>
       <p>M. Stoever<br>Europa Allee 2a<br>30823 Garbsen</p>
       <h3>Kontakt</h3>
-      <p>E-Mail: mail.mstoever@web.de</p>
+      <p>E-Mail: kontakt@mstoever.de</p>
       <h3>Hinweis</h3>
       <p>Diese Website dient ausschließlich der Vorstellung meiner Bücher und enthält Affiliate-Links zu Amazon. Es findet kein direkter Verkauf über diese Website statt.</p>
       <h3>Haftung für Inhalte</h3>
@@ -1019,7 +1080,7 @@
     <div class="modal-content">
       <h2>Datenschutzerklärung</h2>
       <h3>1. Verantwortlicher</h3>
-      <p>M. Stoever<br>Europa Allee 2a, 30823 Garbsen<br>E-Mail: mail.mstoever@web.de</p>
+      <p>M. Stoever<br>Europa Allee 2a, 30823 Garbsen<br>E-Mail: kontakt@mstoever.de</p>
       <h3>2. Hosting</h3>
       <p>Diese Website wird bei Netlify, Inc. gehostet. Beim Besuch der Website werden automatisch Informationen (z.B. IP-Adresse, Zeitpunkt des Zugriffs) in Server-Logfiles gespeichert. Weitere Informationen: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener" style="color: var(--accent-glow);">Netlify Datenschutz</a></p>
       <h3>3. Webanalyse (GoatCounter)</h3>
@@ -1160,7 +1221,7 @@
       }
     });
 
-    // === Atmospheric Fog / Particle Effect ===
+    // === Atmospheric Fog / Particle Effect (Dual Color: Red + Gold) ===
     (function() {
       const canvas = document.getElementById('fog-canvas');
       if (!canvas) return;
@@ -1178,6 +1239,20 @@
         particles = [];
         const count = Math.floor((w * h) / 12000);
         for (let i = 0; i < count; i++) {
+          // 55% red particles, 35% gold particles, 10% neutral
+          const rand = Math.random();
+          let color;
+          if (rand < 0.55) {
+            // Red spectrum (48 Stunden)
+            color = { r: 200, g: 150 + Math.random() * 40, b: 160 + Math.random() * 30 };
+          } else if (rand < 0.90) {
+            // Gold spectrum (MOLDOW)
+            color = { r: 210 + Math.random() * 30, g: 180 + Math.random() * 30, b: 100 + Math.random() * 40 };
+          } else {
+            // Neutral
+            color = { r: 200, g: 190, b: 190 };
+          }
+
           particles.push({
             x: Math.random() * w,
             y: Math.random() * h,
@@ -1186,7 +1261,8 @@
             dy: (Math.random() - 0.5) * 0.15,
             opacity: Math.random() * 0.4 + 0.05,
             pulse: Math.random() * Math.PI * 2,
-            pulseSpeed: Math.random() * 0.01 + 0.005
+            pulseSpeed: Math.random() * 0.01 + 0.005,
+            color: color
           });
         }
       }
@@ -1196,17 +1272,17 @@
 
         ctx.clearRect(0, 0, w, h);
 
-        // Soft fog layers
-        const fogGrad1 = ctx.createRadialGradient(w * 0.3, h * 0.7, 0, w * 0.3, h * 0.7, w * 0.5);
-        fogGrad1.addColorStop(0, 'rgba(139, 47, 63, 0.03)');
-        fogGrad1.addColorStop(1, 'transparent');
-        ctx.fillStyle = fogGrad1;
+        // Soft fog layers – red left, gold right
+        const fogRed = ctx.createRadialGradient(w * 0.25, h * 0.6, 0, w * 0.25, h * 0.6, w * 0.45);
+        fogRed.addColorStop(0, 'rgba(139, 47, 63, 0.03)');
+        fogRed.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogRed;
         ctx.fillRect(0, 0, w, h);
 
-        const fogGrad2 = ctx.createRadialGradient(w * 0.7, h * 0.3, 0, w * 0.7, h * 0.3, w * 0.4);
-        fogGrad2.addColorStop(0, 'rgba(80, 30, 100, 0.025)');
-        fogGrad2.addColorStop(1, 'transparent');
-        ctx.fillStyle = fogGrad2;
+        const fogGold = ctx.createRadialGradient(w * 0.75, h * 0.4, 0, w * 0.75, h * 0.4, w * 0.4);
+        fogGold.addColorStop(0, 'rgba(184, 148, 58, 0.025)');
+        fogGold.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogGold;
         ctx.fillRect(0, 0, w, h);
 
         // Particles
@@ -1223,7 +1299,7 @@
           const alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(200, 180, 190, ${alpha})`;
+          ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
           ctx.fill();
         }
 
@@ -1239,27 +1315,34 @@
         createParticles();
       });
 
-      // Pause animation when hero is not visible (saves CPU/battery)
+      // Pause animation when hero is not visible
       const heroEl = document.getElementById('hero');
       const fogObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (!animating) {
-              animating = true;
-              draw();
-            }
-          } else {
-            animating = false;
-          }
+          animating = entry.isIntersecting;
+          if (animating) draw();
         });
       }, { threshold: 0 });
       fogObserver.observe(heroEl);
     })();
+
+    // === Spore particles for new project cover ===
+    (function() {
+      const container = document.getElementById('sporeContainer');
+      if (!container) return;
+
+      for (let i = 0; i < 12; i++) {
+        const spore = document.createElement('div');
+        spore.className = 'spore';
+        spore.style.left = (15 + Math.random() * 70) + '%';
+        spore.style.bottom = (5 + Math.random() * 30) + '%';
+        spore.style.animationDelay = (Math.random() * 6) + 's';
+        spore.style.animationDuration = (4 + Math.random() * 4) + 's';
+        spore.style.width = (2 + Math.random() * 3) + 'px';
+        spore.style.height = spore.style.width;
+        container.appendChild(spore);
+      }
+    })();
   </script>
-
-  <!-- Analytics -->
-  <script data-goatcounter="https://mstoever.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>
