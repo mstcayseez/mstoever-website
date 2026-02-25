@@ -325,6 +325,28 @@
 
     .about-image-wrapper {
       position: relative;
+      overflow: hidden;
+    }
+
+    .about-image-wrapper img {
+      filter: saturate(0.3) contrast(1.15) brightness(0.9);
+      transition: filter 0.5s ease;
+    }
+
+    .about-image-wrapper:hover img {
+      filter: saturate(0.45) contrast(1.1) brightness(0.95);
+    }
+
+    .about-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 12, 0.6) 100%),
+        linear-gradient(180deg, transparent 50%, rgba(10, 10, 12, 0.7) 100%),
+        linear-gradient(180deg, rgba(184, 148, 58, 0.06) 0%, transparent 50%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .about-image-wrapper::after {
@@ -886,7 +908,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper reveal">
-          <img src="author.png" alt="M. Stoever – Autor" loading="lazy" decoding="async" width="313" height="375" style="width: 100%; height: auto; border: 1px solid var(--border);">
+          <img src="author.png" alt="M. Stoever – Autor" loading="lazy" decoding="async" width="313" height="375" style="width: 100%; height: auto; display: block;">
         </div>
         <div class="about-text reveal">
           <p class="section-label">Über den Autor</p>
