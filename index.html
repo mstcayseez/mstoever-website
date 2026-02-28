@@ -41,12 +41,11 @@
       --text-primary: #e8e6e3;
       --text-secondary: #9a9a9a;
 
-      /* 48 Stunden – Rot */
-      --accent: #8b2f3f;
-      --accent-glow: #b33a4f;
-      --accent-subtle: rgba(139, 47, 63, 0.15);
+      /* Gold / Bernstein – Hauptfarbe */
+      --accent: #b8943a;
+      --accent-glow: #d4a843;
+      --accent-subtle: rgba(184, 148, 58, 0.15);
 
-      /* MOLDOW / Neues Projekt – Gold */
       --gold: #b8943a;
       --gold-glow: #d4a843;
       --gold-dark: #6b5520;
@@ -163,16 +162,16 @@
       overflow: hidden;
     }
 
-    /* Dual atmosphere: Red left (48 Stunden) + Gold right (MOLDOW) */
+    /* Gold / Bernstein atmosphere */
     .hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse at 15% 50%, rgba(139, 47, 63, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 50%, rgba(184, 148, 58, 0.10) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 45%, rgba(184, 148, 58, 0.09) 0%, transparent 50%),
         radial-gradient(ellipse at 50% 100%, rgba(107, 85, 32, 0.06) 0%, transparent 35%),
-        radial-gradient(ellipse at 50% 0%, rgba(139, 47, 63, 0.04) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 0%, rgba(184, 148, 58, 0.04) 0%, transparent 40%);
       pointer-events: none;
     }
 
@@ -214,7 +213,7 @@
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.5s;
-      text-shadow: 0 0 40px rgba(139, 47, 63, 0.12), 0 0 80px rgba(184, 148, 58, 0.06);
+      text-shadow: 0 0 40px rgba(184, 148, 58, 0.12), 0 0 80px rgba(184, 148, 58, 0.06);
     }
 
     .hero-quote {
@@ -249,7 +248,7 @@
     .hero-cta:hover {
       background: var(--accent-glow);
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(139, 47, 63, 0.3);
+      box-shadow: 0 8px 30px rgba(184, 148, 58, 0.3);
     }
 
     .hero-cta svg {
@@ -279,7 +278,7 @@
 
     .hero-scroll-hint .line {
       width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--accent-glow), var(--gold), transparent);
+      background: linear-gradient(to bottom, var(--accent-glow), var(--gold-dark), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
@@ -399,12 +398,8 @@
     }
 
     .book-card:hover {
-      border-color: rgba(139, 47, 63, 0.3);
-      transform: translateY(-3px);
-    }
-
-    .book-card--gold:hover {
       border-color: rgba(184, 148, 58, 0.3);
+      transform: translateY(-3px);
     }
 
     .book-cover {
@@ -425,10 +420,8 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(139, 47, 63, 0.1) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(184, 148, 58, 0.1) 0%, transparent 60%);
     }
-
-    .book-cover--image::before { display: none; }
 
     /* Gold cover for new project */
     .book-cover--gold {
@@ -537,7 +530,7 @@
     .btn-amazon:hover {
       background: var(--accent-glow);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 47, 63, 0.3);
+      box-shadow: 0 6px 20px rgba(184, 148, 58, 0.3);
     }
 
     .btn-amazon svg { width: 16px; height: 16px; }
@@ -602,7 +595,7 @@
     }
 
     .contact-link:hover {
-      border-color: rgba(139, 47, 63, 0.3);
+      border-color: rgba(184, 148, 58, 0.3);
       transform: translateX(4px);
     }
 
@@ -836,19 +829,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Leseprobe reading styles */
-    #leseprobe .modal-content p {
-      line-height: 1.9;
-      font-size: 0.95rem;
-      text-align: justify;
-      hyphens: auto;
-    }
-
-    #leseprobe .modal-content h3 {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      margin: 2rem 0 1rem;
-    }
   </style>
 </head>
 <body>
@@ -899,15 +879,11 @@
           <p>Manche Geschichten beginnen nicht mit einem Anfang, sondern mit einem Gefühl. Einem Unbehagen, das sich festsetzt. Einem Satz, der hängen bleibt, lange nachdem man das Buch zugeklappt hat. Genau dort setze ich an.</p>
           <p>Ich schreibe Psychothriller. Geschichten über Menschen, die in Situationen geraten, in denen die Regeln nicht mehr gelten – in denen sich zeigt, wer sie wirklich sind, wenn alles wegfällt, was sie bisher geschützt hat. Keine strahlenden Helden. Keine einfachen Antworten. Nur die Frage, wie dünn die Schicht ist zwischen dem, was wir zeigen, und dem, was darunter liegt.</p>
           <p>Meine Figuren sind keine Opfer und keine Monster. Sie sind Menschen mit Fehlern, blinden Flecken und Entscheidungen, die sie nicht mehr rückgängig machen können. Die Spannung in meinen Büchern kommt nicht aus Verfolgungsjagden oder Plottwists – sie kommt aus dem Moment, in dem du merkst, dass du die Person, die du gerade liest, vielleicht besser verstehst, als dir lieb ist.</p>
-          <p>Das Schreiben war schon immer da – als stiller Begleiter, als Ventil, als Obsession. Jahrelang entstanden die Geschichten nur für die Schublade, bis der Mut kam, sie in die Welt zu lassen. Mit „48 Stunden" erschien 2025 mein Debüt – ein Kammerspiel über fünf Fremde in einem verschlossenen Hotelzimmer, Schuld, Manipulation und die Frage, ob Wahrheit etwas ist, das man ertragen will. Das nächste Buch ist in Arbeit. Andere Figuren, anderer Ort – aber die gleiche Frage: Was passiert mit Menschen, wenn der Boden unter ihnen wegbricht?</p>
+          <p>Das Schreiben war schon immer da – als stiller Begleiter, als Ventil, als Obsession. Jahrelang entstanden die Geschichten nur für die Schublade, bis der Mut kam, sie in die Welt zu lassen.</p>
           <p>Ich lebe in Norddeutschland, trinke zu viel Kaffee, schreibe am liebsten nachts – und teile mein Leben mit zwei chaotischen Katzen, die vermutlich die wahren Herrscher im Haushalt sind.</p>
           <div class="about-stats">
             <div>
               <div class="about-stat-number">1</div>
-              <div class="about-stat-label">Veröffentlicht</div>
-            </div>
-            <div>
-              <div class="about-stat-number about-stat-number--gold">1</div>
               <div class="about-stat-label">In Arbeit</div>
             </div>
           </div>
@@ -921,49 +897,10 @@
     <div class="container">
       <div class="books-header reveal">
         <p class="section-label">Bibliografie</p>
-        <h2 class="section-title">Die Bücher</h2>
+        <h2 class="section-title">Das Buch</h2>
       </div>
 
-      <!-- Book 1: 48 Stunden -->
-      <div class="book-card reveal">
-        <div class="book-cover book-cover--image" style="padding: 0; border: none;">
-          <img src="48Stunden_cover_web.png" alt="48 Stunden – M. Stoever" loading="lazy" decoding="async" width="560" height="896" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="book-info">
-          <span class="book-badge">Psychothriller</span>
-          <h3 class="book-title">48 Stunden</h3>
-          <p class="book-subtitle">Ein Psychothriller, der unter die Haut geht.</p>
-          <p class="book-description">Zimmer 317. Kein Ausgang. Keine Erinnerung. Fünf Menschen, die sich nicht kennen – und einer von ihnen hat Blut an den Händen. In den nächsten 48 Stunden wird die Wahrheit ans Licht kommen. Aber nicht alle werden sie überleben.</p>
-          <div class="book-meta">
-            <div class="book-meta-item">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-              </svg>
-              Taschenbuch &amp; eBook
-            </div>
-            <div class="book-meta-item">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-              </svg>
-              2025
-            </div>
-          </div>
-          <div class="book-links">
-            <a href="https://www.amazon.de/dp/B0GNCL93YY" target="_blank" rel="noopener noreferrer" class="btn-amazon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01zm14.58-2.33c-.24.36-.74.47-1.1.23-.01-.01-.02-.01-.03-.02-1.06-.78-2.28-1.19-3.55-1.19-.84 0-1.66.16-2.44.48-.24.1-.44-.05-.51-.29-.07-.24.04-.48.28-.59.91-.36 1.88-.55 2.86-.55 1.47 0 2.88.48 4.05 1.38.3.24.38.68.14.99l-.01.01-.01.01c-.06.09-.12.15-.17.19-.09.06-.17.1-.25.12a.573.573 0 01-.26-.03z"/><path d="M13.19 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.1 1.54h.05c.53-.89 1.77-1.76 3.54-1.76 1.48 0 3.78.88 3.78 4.54v6.36h-1.96v-6.14c0-1.72-.64-3.15-2.47-3.15-1.27 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39h-1.96v-7.76z"/><path d="M4.14 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.11 1.54h.04c.53-.89 1.78-1.76 3.55-1.76 1.48 0 3.78.88 3.78 4.54v6.36H11.3v-6.14c0-1.72-.64-3.15-2.47-3.15-1.28 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39H4.14v-7.76z"/></svg>
-              Auf Amazon ansehen
-            </a>
-            <button class="btn-leseprobe" onclick="openModal('leseprobe')">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-              </svg>
-              Leseprobe lesen
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Book 2: Neues Projekt (Gold) -->
+      <!-- Neues Projekt -->
       <div class="book-card book-card--gold reveal" style="position: relative; overflow: hidden;">
         <div class="book-cover book-cover--gold" style="position: relative;">
           <!-- Subtle spore particles -->
@@ -1197,70 +1134,6 @@
     </div>
   </div>
 
-  <!-- LESEPROBE MODAL -->
-  <div class="modal-overlay" id="leseprobe">
-    <button class="modal-close" onclick="closeModal('leseprobe')">&times;</button>
-    <div class="modal-content">
-      <p class="section-label">Leseprobe</p>
-      <h2>48 Stunden</h2>
-      <h3>Kapitel 1: Zimmer 317</h3>
-      <p>Das Erste, was Mark Seidel spürte, war der Teppich.</p>
-      <p>Rau. Kratzig. Das billige Zeug, das sie in Hotels verlegen, wo niemand länger bleibt als eine Nacht. Er lag mit dem Gesicht darauf, die rechte Wange in die Fasern gedrückt, und der Geruch stieg ihm in die Nase wie eine Erinnerung an etwas, das er nie erlebt haben wollte. Chemisch. Süßlich. Falsch.</p>
-      <p>Er öffnete die Augen.</p>
-      <p>Deckenlampe. Runder Schirm, milchiges Glas, eine tote Fliege darin. Das Licht war zu hell und gleichzeitig zu gelb, als hätte jemand vergessen, dass es einen Unterschied gab zwischen beleuchten und blenden.</p>
-      <p>Mark rollte sich auf den Rücken. Sein Schädel pochte. Nicht wie ein Kater – er kannte Kater, kannte dieses dumpfe, selbstverschuldete Hämmern hinter der Stirn. Das hier war anders. Tiefer. Als hätte jemand einen Finger in sein Gehirn gedrückt und einmal umgerührt.</p>
-      <p>Er hob die Hand und befühlte seinen Hinterkopf. Kein Blut. Keine Beule. Kein erkennbarer Schaden. Nur dieses Pulsieren, das hinter seinen Augen saß wie ein zweiter Herzschlag, den niemand eingeladen hatte.</p>
-      <p>Er setzte sich auf.</p>
-      <p>Das Zimmer war klein. Doppelbett, weiße Laken, die Tagesdecke auf den Boden gerutscht. Ein Schreibtisch aus Pressspan, die Kanten schon abgegriffen, als hätten hundert Hände dort gelegen und darauf gewartet, dass etwas passiert. Ein Fernseher, der an der Wand hing wie ein schwarzes Auge. Gardinen, zugezogen. Ein Teppich, der einmal beige gewesen sein musste und jetzt die Farbe hatte, die entsteht, wenn zu viele Schuhe über zu wenig Stoff laufen. Keine Uhr. Kein Wecker. Keine Hinweise darauf, welche Tageszeit es war.</p>
-      <p>Und vier Menschen, die er noch nie in seinem Leben gesehen hatte.</p>
-      <div style="text-align: center; color: var(--text-secondary); margin: 2rem 0; letter-spacing: 0.5em;">***</div>
-      <p>Mark Seidel war zweiundvierzig Jahre alt, und in seinem Leben hatte er gelernt, Situationen einzuschätzen. Schnell. Effizient. Es war sein Beruf – oder das, was sein Beruf aus ihm gemacht hatte. Man betrat einen Raum, scannte die Gesichter, kategorisierte die Körpersprache, identifizierte den Anführer und den Schwächsten, und dann traf man eine Entscheidung.</p>
-      <p>In Konferenzräumen funktionierte das.</p>
-      <p>In Hotelzimmern mit vier bewusstlosen Fremden nicht.</p>
-      <p>Sein erster Gedanke war: Überfall. Drogenparty. Irgendetwas Dummes, an das er sich nicht erinnerte, weil man sich an dumme Dinge selten erinnerte.</p>
-      <p>Sein zweiter Gedanke war: Nein. Denn er trug seinen Anzug. Den dunkelblauen. Den für fünfzehnhundert Euro, den er für Klientenmeetings aufsparte. Man trug keinen fünfzehnhundert-Euro-Anzug auf einer Drogenparty.</p>
-      <p>Sein dritter Gedanke war gar kein Gedanke, sondern ein Gefühl. Ein kaltes, schweres Gefühl, das sich in seinem Magen niederließ wie ein Stein in einem Teich. Langsam. Unaufhaltsam.</p>
-      <p>Etwas stimmte nicht.</p>
-      <div style="text-align: center; color: var(--text-secondary); margin: 2rem 0; letter-spacing: 0.5em;">***</div>
-      <p>Ein junger Mann saß zusammengesackt an der Wand neben der Tür. Anfang zwanzig, vielleicht. Dunkle Haare, zu lang, fielen ihm ins Gesicht. Er trug Jeans und ein schwarzes T-Shirt, das an einer Schulter verrutscht war, und seine Hände lagen in seinem Schoß wie fremde Gegenstände. Er starrte darauf. Auf seine Hände.</p>
-      <p>Sie waren rot.</p>
-      <p>Nicht leuchtend rot. Nicht filmrot. Nicht das Rot, das man in Thrillern sah, wo es immer ein bisschen zu perfekt aussah, ein bisschen zu dramatisch. Sondern dieses bräunliche, getrocknete Rot, das aussah wie Rost und roch wie Kupfer, und Mark wusste sofort, was es war, noch bevor sein Verstand das Wort formen konnte.</p>
-      <p>Blut.</p>
-      <p>Es saß zwischen den Fingern des Jungen, in den Rillen seiner Handflächen, unter den Nägeln. Wie etwas, das eingezogen war. Das sich häuslich eingerichtet hatte und nicht mehr gehen wollte.</p>
-      <div style="text-align: center; color: var(--text-secondary); margin: 2rem 0; letter-spacing: 0.5em;">***</div>
-      <p>Eine Frau saß auf der Bettkante. Ende dreißig, kurzes Haar, das an einer Seite länger war als an der anderen – nicht aus Schlampigkeit, sondern mit Absicht, als hätte sie sich den Schnitt selbst ausgesucht und fand ihn gut. Tätowierung am Handgelenk – ein geometrisches Muster, feiner als alles, was Mark je gesehen hatte, Linien, die sich ineinander verschlangen wie die Äste eines Baumes, der unter der Haut wuchs. Sie saß kerzengerade, die Augen weit offen, und ihr Blick wanderte durch das Zimmer wie ein Tier, das nach dem Ausgang sucht. Schnell. Systematisch. Ecke für Ecke.</p>
-      <p>Am Schreibtisch stand ein Mann, der älter war als Mark. Mitte fünfzig, schwer, Bauchansatz unter einem zerknitterten Hemd. Seine Haare waren grau, kurz geschnitten, militärisch fast, und sein Gesicht hatte die Struktur von Leder – dick, verwittert, von Wind und Jahren gegerbt. Er hatte beide Hände auf die Tischplatte gestützt und atmete langsam. Bewusst langsam. Durch die Nase ein, durch den Mund aus. Die Art, wie jemand atmet, der sich selbst davon abhalten muss, in Panik zu geraten.</p>
-      <p>Und dann war da noch eine Frau, die neben dem Fenster stand. Jünger, Ende dreißig vielleicht. Schmal. Blass. Sie trug die Arbeitskleidung einer Krankenschwester, hellblau, die Hose leicht zerknittert. Und sie war die Einzige im Raum, die nicht panisch aussah.</p>
-      <p>Sie sah ruhig aus.</p>
-      <p>Nicht erleichtert. Nicht gelassen. Sondern ruhig auf eine Art, die Mark nicht einordnen konnte. Wie jemand, der in einem brennenden Haus steht und beschlossen hat, sich zuerst einmal hinzusetzen.</p>
-      <p><em>Oder wie jemand, der keine Angst hatte, weil er keinen Grund zur Angst hatte.</em></p>
-      <p><em>Weil er wusste, was passierte.</em></p>
-      <div style="text-align: center; color: var(--text-secondary); margin: 2rem 0; letter-spacing: 0.5em;">***</div>
-      <p>»Wo bin ich?«</p>
-      <p>Das war der Junge. Seine Stimme war heiser, als hätte er stundenlang geschrien oder stundenlang geschwiegen – beides klang am Ende gleich.</p>
-      <p>»Das«, sagte der Ältere am Schreibtisch, ohne sich umzudrehen, »würde ich auch gern wissen.«</p>
-      <p>Mark stand auf. Sein Körper protestierte. Knie, Rücken, Nacken – alles steif, alles falsch. Er griff nach der Erinnerung wie nach einem Faden, der aus einem Ärmel hing. Da war etwas. Ein Restaurant. Nein. Eine Bar? Sein Büro? Er sah Lichter, hörte Stimmen, aber alles war wie hinter Milchglas. Weich. Aufgelöst. Nicht greifbar.</p>
-      <p>Und dann: nichts. Ein Schnitt. Wie ein Film, bei dem jemand eine Szene herausgeschnitten hatte. Hier das Büro, dort der Teppich. Hier der Laptop, dort das Blut. Dazwischen: Schwärze.</p>
-      <div style="text-align: center; color: var(--text-secondary); margin: 2rem 0; letter-spacing: 0.5em;">***</div>
-      <p>Mark ging zur Tür. Drei Schritte, das Zimmer war wirklich klein. Er drückte die Klinke.</p>
-      <p>Nichts.</p>
-      <p>Er drückte fester. Rüttelte. Zog. Die Tür bewegte sich nicht. Nicht einen Millimeter.</p>
-      <p>»Abgeschlossen«, sagte er. Und hasste, wie das Wort klang. Endgültig.</p>
-      <p>»Von außen«, sagte der Ältere. Er hatte sich umgedreht. »Die Klinke funktioniert. Das Schloss nicht. Und wenn Sie genau hinschauen –« Er deutete auf den Türrahmen. Da waren sie. Schrauben. Vier zusätzliche Schrauben, die Köpfe abgeschliffen. »Jemand hat eine zusätzliche Verstärkung angebracht. Von außen. Mit Vorbereitung.«</p>
-      <p>»Woher wissen Sie das?«, fragte die Frau mit der Tätowierung.</p>
-      <p>»Ich war Polizist.«</p>
-      <p>Stille.</p>
-      <p>Die Art von Stille, die entsteht, wenn ein Wort den Raum verändert. Polizist. In einem verschlossenen Zimmer. Mit Blut an den Händen eines Fremden. Mit fünf Menschen, die nicht wussten, wo sie waren.</p>
-      <p>»War«, wiederholte die Frau. »Sie <em>waren</em> Polizist.«</p>
-      <div style="text-align: center; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-        <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 1.5rem;">Neugierig geworden? Lies weiter...</p>
-        <a href="https://www.amazon.de/dp/B0GNCL93YY" target="_blank" rel="noopener noreferrer" class="btn-amazon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.071-.116.36-.048.473-.126 3.15-2.2 6.87-3.39 10.65-3.39 2.95 0 5.82.62 8.51 1.86.42.19.82.42.42.88-.19.23-.6.15-.86.01-2.56-1.14-5.28-1.69-8.07-1.69-3.56 0-7.01 1.04-10.02 3-.16.11-.41.2-.54-.01-.06-.09-.08-.18-.05-.27l.01-.01zm14.58-2.33c-.24.36-.74.47-1.1.23-.01-.01-.02-.01-.03-.02-1.06-.78-2.28-1.19-3.55-1.19-.84 0-1.66.16-2.44.48-.24.1-.44-.05-.51-.29-.07-.24.04-.48.28-.59.91-.36 1.88-.55 2.86-.55 1.47 0 2.88.48 4.05 1.38.3.24.38.68.14.99l-.01.01-.01.01c-.06.09-.12.15-.17.19-.09.06-.17.1-.25.12a.573.573 0 01-.26-.03z"/><path d="M13.19 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.1 1.54h.05c.53-.89 1.77-1.76 3.54-1.76 1.48 0 3.78.88 3.78 4.54v6.36h-1.96v-6.14c0-1.72-.64-3.15-2.47-3.15-1.27 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39h-1.96v-7.76z"/><path d="M4.14 11.83c0-1.11-.02-2.04-.08-2.92h1.74l.11 1.54h.04c.53-.89 1.78-1.76 3.55-1.76 1.48 0 3.78.88 3.78 4.54v6.36H11.3v-6.14c0-1.72-.64-3.15-2.47-3.15-1.28 0-2.27.91-2.61 1.99-.09.24-.13.58-.13.91v6.39H4.14v-7.76z"/></svg>
-          Auf Amazon kaufen
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- JAVASCRIPT -->
   <script>
@@ -1342,14 +1215,11 @@
         particles = [];
         const count = Math.floor((w * h) / 12000);
         for (let i = 0; i < count; i++) {
-          // 55% red particles, 35% gold particles, 10% neutral
+          // 85% gold/amber particles, 15% neutral
           const rand = Math.random();
           let color;
-          if (rand < 0.55) {
-            // Red spectrum (48 Stunden)
-            color = { r: 200, g: 150 + Math.random() * 40, b: 160 + Math.random() * 30 };
-          } else if (rand < 0.90) {
-            // Gold spectrum (MOLDOW)
+          if (rand < 0.85) {
+            // Gold / Amber spectrum
             color = { r: 210 + Math.random() * 30, g: 180 + Math.random() * 30, b: 100 + Math.random() * 40 };
           } else {
             // Neutral
@@ -1375,17 +1245,17 @@
 
         ctx.clearRect(0, 0, w, h);
 
-        // Soft fog layers – red left, gold right
-        const fogRed = ctx.createRadialGradient(w * 0.25, h * 0.6, 0, w * 0.25, h * 0.6, w * 0.45);
-        fogRed.addColorStop(0, 'rgba(139, 47, 63, 0.03)');
-        fogRed.addColorStop(1, 'transparent');
-        ctx.fillStyle = fogRed;
+        // Soft gold fog layers
+        const fogLeft = ctx.createRadialGradient(w * 0.25, h * 0.6, 0, w * 0.25, h * 0.6, w * 0.45);
+        fogLeft.addColorStop(0, 'rgba(184, 148, 58, 0.025)');
+        fogLeft.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogLeft;
         ctx.fillRect(0, 0, w, h);
 
-        const fogGold = ctx.createRadialGradient(w * 0.75, h * 0.4, 0, w * 0.75, h * 0.4, w * 0.4);
-        fogGold.addColorStop(0, 'rgba(184, 148, 58, 0.025)');
-        fogGold.addColorStop(1, 'transparent');
-        ctx.fillStyle = fogGold;
+        const fogRight = ctx.createRadialGradient(w * 0.75, h * 0.4, 0, w * 0.75, h * 0.4, w * 0.4);
+        fogRight.addColorStop(0, 'rgba(184, 148, 58, 0.025)');
+        fogRight.addColorStop(1, 'transparent');
+        ctx.fillStyle = fogRight;
         ctx.fillRect(0, 0, w, h);
 
         // Particles
