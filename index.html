@@ -216,6 +216,18 @@
       text-shadow: 0 0 40px rgba(184, 148, 58, 0.12), 0 0 80px rgba(184, 148, 58, 0.06);
     }
 
+    .hero-author-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
     .hero-quote {
       font-family: var(--font-display);
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
@@ -852,6 +864,7 @@
     <div class="hero-content">
       <p class="hero-tagline">ATMOSPHÄRISCH · PSYCHOLOGISCH · DUNKEL</p>
       <h1 class="hero-title">M<span>•</span>STOEVER</h1>
+      <p class="hero-author-label">AUTOR</p>
       <p class="hero-quote">„Manche Geschichten lassen dich nicht los – sie verfolgen dich, bis du sie zu Ende gelesen hast."</p>
       <a href="#books" class="hero-cta">
         Entdecke die Bücher
